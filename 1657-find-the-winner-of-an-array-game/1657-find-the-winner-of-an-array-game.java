@@ -18,30 +18,27 @@ public class Solution {
 
     public int getWinner(int[] arr, int k) {
         int round = 0;
-        final LinkedList<Integer> list = getList(arr);
-        final int max = getMax(list);
-        int winner = list.get(0);
-        while (round != k) {
-            if (winner == max) {
-                return max;
-            }
-            int pretnendent = list.get(1);
-            if (winner > pretnendent) {
+        final int max = getMax(arr);
+        if (k == arr.length) {
+            return max;
+        }
+        int winner = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (winner > arr[i]) {
                 round++;
-                list.remove(1);
-                list.add(pretnendent);
-            } else {
-                round = 1;
-                list.remove(0);
-                list.add(winner);
-                winner = pretnendent;
+            }else {
+                winner=arr[i];
+                round=1;
+            }
+            if (round==k){
+                return winner;
             }
         }
 
         return winner;
     }
 
-    private int getMax(LinkedList<Integer> list) {
+    private int getMax(int[] list) {
         int max = Integer.MIN_VALUE;
         for (int n : list) {
             if (n > max) {
@@ -49,13 +46,5 @@ public class Solution {
             }
         }
         return max;
-    }
-
-    private LinkedList<Integer> getList(int[] arr) {
-        final LinkedList<Integer> list = new LinkedList<>();
-        for (int n : arr) {
-            list.add(n);
-        }
-        return list;
     }
 }
