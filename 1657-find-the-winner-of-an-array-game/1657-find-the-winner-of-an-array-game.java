@@ -34,7 +34,6 @@ public class Solution {
                 return winner;
             }
         }
-
         return winner;
     }
 
