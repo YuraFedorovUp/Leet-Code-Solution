@@ -1,21 +1,12 @@
-
-
-
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.PriorityQueue;
 
 
 class SeatManager {
-    private final List<Integer> seats;
+    private final PriorityQueue<Integer> seats;
     private final int size;
 
     public SeatManager(int n) {
-        seats = new ArrayList<>();
+        seats = new PriorityQueue<>();
         size = n;
         for (int i = 0; i < n; i++) {
             seats.add(i + 1);
@@ -23,30 +14,12 @@ class SeatManager {
     }
 
     public int reserve() {
-        int reservedSeat = seats.get(0);
-        seats.remove(0);
+        int reservedSeat = seats.remove();
         return reservedSeat;
     }
 
     public void unreserve(int seatNumber) {
-        int indexInsert = seats.size() == 0 ? 0 : getIndexInsert(0, seats.size() - 1, seatNumber);
-        seats.add(indexInsert, seatNumber);
-    }
-
-    private int getIndexInsert(int left, int right, int seatNumber) {
-        if (left == right) {
-            if (seats.get(left) < seatNumber && seats.get(right) > seatNumber) {
-                return left;
-            } else {
-                return right;
-            }
-        }
-        int mid = left + (right - left) / 2;
-        if (seats.get(mid) < seatNumber) {
-            return getIndexInsert(mid + 1, right, seatNumber);
-        } else {
-            return getIndexInsert(left, mid , seatNumber);
-        }
+        seats.add(seatNumber);
     }
 }
 
