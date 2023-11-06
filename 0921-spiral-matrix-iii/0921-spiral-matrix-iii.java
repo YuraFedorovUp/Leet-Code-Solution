@@ -7,10 +7,21 @@ public class Solution {
 
     private void start() {
         test();
+        test();
     }
 
     private void test() {
-        int[][] ans = spiralMatrixIII(5,6,1,4);
+        int[][] ans = spiralMatrixIII(2, 1, 1, 0);
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(ans[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    private void test1() {
+        int[][] ans = spiralMatrixIII(5, 6, 1, 4);
         for (int i = 0; i < 30; i++) {
             for (int j = 0; j < 2; j++) {
                 System.out.print(ans[i][j] + " ");
@@ -22,25 +33,25 @@ public class Solution {
     public int[][] spiralMatrixIII(int rows, int cols, int rStart, int cStart) {
         final int yMax = rows;
         final int xMax = cols;
-        int result[][] = new int[yMax*xMax][2];
+        int result[][] = new int[yMax * xMax][2];
         Point point = new Point(rStart, cStart);
         Direction direction = Direction.RIGHT;
         int threshold = 0;
         int means = 0;
         while (means < yMax * xMax) {
             if (isValidPoint(point, yMax, xMax)) {
-                result[means][0] =point.getY();
-                result[means][1] =point.getX();
+                result[means][0] = point.getY();
+                result[means][1] = point.getX();
                 means++;
             }
 
 
-                point = getNextPoint(point, direction, xMax);
-                final Direction newDirection = getDirection(point, direction, threshold, rStart, cStart);
-                if (direction == Direction.LEFT && newDirection == Direction.UP) {
-                    threshold++;
-                }
-                direction = newDirection;
+            point = getNextPoint(point, direction, xMax);
+            final Direction newDirection = getDirection(point, direction, threshold, rStart, cStart);
+            if (direction == Direction.LEFT && newDirection == Direction.UP) {
+                threshold++;
+            }
+            direction = newDirection;
 
         }
         return result;
@@ -59,7 +70,7 @@ public class Solution {
         if (direction == Direction.DOWN && point.getY() == yStart + 1 + threshold) {
             return Direction.LEFT;
         }
-        if (direction == Direction.LEFT && point.getX() == xStart -1-threshold) {
+        if (direction == Direction.LEFT && point.getX() == xStart - 1 - threshold) {
             return Direction.UP;
         }
         if (direction == Direction.UP && point.getY() == yStart - threshold) {
