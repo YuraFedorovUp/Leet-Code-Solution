@@ -15,10 +15,8 @@ public class Solution {
     }
 
     public boolean canJump(int[] nums) {
-        if (nums.length == 1) {
-            return true;
-        }
         final boolean[] opportunityJumps = new boolean[nums.length];
+        opportunityJumps[0] = true;
         for (int i = 0; i < nums.length - 1; i++) {
             if (!opportunityJumps[i] && i != 0) {
                 continue;
