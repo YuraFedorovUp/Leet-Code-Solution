@@ -18,17 +18,14 @@ public class Solution {
         System.out.println(eliminateMaximum(new int[]{1, 2}, new int[]{1, 5}));
     }
 
-    public int eliminateMaximum(int[] dist, int[] speed) {
+       public int eliminateMaximum(int[] dist, int[] speed) {
         int monstersQuantity = dist.length;
-        List<Integer> killedMonsters = new ArrayList<>();
         final int maxSteps[] = getMaxSteps(dist, speed, monstersQuantity);
         Arrays.sort(maxSteps);
-        List<Integer> list = new ArrayList<>();
         for (int step = 0; step < monstersQuantity; step++) {
             if (maxSteps[step] < step + 1) {
                 return step;
             }
-            list.add(step);
         }
         return monstersQuantity;
     }
