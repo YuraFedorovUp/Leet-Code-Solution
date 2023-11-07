@@ -1,12 +1,8 @@
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Solution {
-    private static int result;
-
     public static void main(String[] args) {
         Solution main = new Solution();
         main.start();
@@ -23,23 +19,16 @@ public class Solution {
     }
 
     public int eliminateMaximum(int[] dist, int[] speed) {
-     //   System.out.println();
-        // int killedMonsters = 0;
         int monstersQuantity = dist.length;
         List<Integer> killedMonsters = new ArrayList<>();
         final int maxSteps[] = getMaxSteps(dist, speed, monstersQuantity);
         Arrays.sort(maxSteps);
-      //  printArr(dist);
-     //   printArr(speed);
-      //  printArr(maxSteps);
         List<Integer> list = new ArrayList<>();
         for (int step = 0; step < monstersQuantity; step++) {
             if (maxSteps[step] < step + 1) {
-                return step ;
+                return step;
             }
- 
             list.add(step);
-
         }
         return monstersQuantity;
     }
@@ -53,12 +42,5 @@ public class Solution {
             }
         }
         return maxSteps;
-    }
-
-    private void printArr(int[] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
     }
 }
