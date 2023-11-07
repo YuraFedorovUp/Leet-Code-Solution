@@ -37,11 +37,7 @@ public class Solution {
             if (maxSteps[step] < step + 1) {
                 return step ;
             }
-            if (maxSteps[step] == step + 1 && dist[step] % speed[step] == 0) {
-                if (list.contains(step)) {
-                    return step - 1;
-                }
-            }
+ 
             list.add(step);
 
         }
