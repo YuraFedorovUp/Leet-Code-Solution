@@ -1,15 +1,24 @@
-class Solution {
+public class Solution {
+
+    public static void main(String[] args) {
+        Solution main = new Solution();
+        main.start();
+    }
+
+    private void start() {
+        test();
+    }
+
+    private void test() {
+        System.out.println(isReachableAtTime(3, 1, 7, 3, 3));
+        System.out.println(isReachableAtTime(2,4,7,6,6));
+        System.out.println(isReachableAtTime(1, 2, 1, 2, 1));
+    }
+
     public boolean isReachableAtTime(int sx, int sy, int fx, int fy, int t) {
-        final int startY = sy;
-        final int startX = sx;
-        final int endY = fy;
-        final int endX = fx;
-        final int dist = t;
-        final int distX = Math.abs(startX - endX);
-        final int distY = Math.abs(startY - endY);
-        final int distMax = Math.max(distX, distY);
+        final int distMax = Math.max(Math.abs(sx - fx), Math.abs(sy - fy));
         if (distMax == 0) {
-            return t !=1;
+            return t != 1;
         }
         return distMax <= t;
     }
