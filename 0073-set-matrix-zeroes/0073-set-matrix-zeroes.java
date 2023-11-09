@@ -40,21 +40,15 @@ public class Solution {
                 if (matrix[i][j] == 0) {
                     columns.add(j);
                     isFillZero = true;
-
-                }
-                if (columns.contains(j)) {
+                    for (int q = i; q >= 0; q--) {
+                        matrix[q][j] = 0;
+                    }
+                } else if ((columns.contains(j))) {
                     matrix[i][j] = 0;
                 }
             }
             if (isFillZero) {
                 Arrays.fill(matrix[i], 0);
-            }
-        }
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (columns.contains(j)) {
-                    matrix[i][j] = 0;
-                }
             }
         }
     }
