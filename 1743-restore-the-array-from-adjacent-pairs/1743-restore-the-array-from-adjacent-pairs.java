@@ -50,9 +50,6 @@ class Solution {
         while (true) {
             final List<Integer> indexes = numberToIndexes.get(nextNumber);
             if (indexes.size() == 1) {
-                final int currentFirst = adjacentPairs[indexes.get(0)][0];
-                final int currentSecond = adjacentPairs[indexes.get(0)][1];
-
                 intermediateResult.add(nextNumber);
                 break;
             }
