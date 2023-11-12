@@ -98,14 +98,6 @@ public class Solution {
         return false;
     }
 
-    private void printMy(boolean[][] used) {
-        for (int i = 0; i < used.length; i++) {
-            for (int j = 0; j < used[0].length; j++) {
-
-            }
-        }
-    }
-
     private boolean isNotValidate(int yCur, int xCur, int yMax, int xMax) {
         return yCur < 0 || yCur >= yMax || xCur < 0 || xCur >= xMax;
     }
