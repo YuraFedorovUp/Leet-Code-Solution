@@ -1,10 +1,21 @@
-
-
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
-
+//class ListNode {
+//    int val;
+//    ListNode next;
+//
+//    ListNode() {
+//    }
+//
+//    ListNode(int val) {
+//        this.val = val;
+//    }
+//
+//    ListNode(int val, ListNode next) {
+//        this.val = val;
+//        this.next = next;
+//    }
+//}
 
 public class Solution {
     public static void main(String[] args) {
@@ -38,7 +49,7 @@ public class Solution {
     }
 
     private void test3() {
-        final ListNode node = createNode(0, List.of(1,2));
+        final ListNode node = createNode(0, List.of(1, 2));
         final ListNode result = deleteDuplicates(node);
         printMy(result);
     }
@@ -66,12 +77,12 @@ public class Solution {
             ListNode node = previous.next;
             final int value = node.val;
             if (node.next == null) {
-               // previous.next = null;
+                // previous.next = null;
                 break;
             } else if (node.next.val != value) {
                 previous = node;
             } else {
-                while (node!= null && value == node.val) {
+                while (node != null && value == node.val) {
                     node = node.next;
                 }
                 previous.next = node;
