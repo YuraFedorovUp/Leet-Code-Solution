@@ -76,19 +76,9 @@ public class Solution {
         if (step == word.length() - 1) {
             return word.charAt(step) == board[y][x];
         }
-//        if (step >= word.length()) {
-//            return true;
-//        }
         if (word.charAt(step) != board[y][x]) {
             return false;
         }
-//        if (word.length() == 1) {
-//            return true;
-//        }
-//        printMy(used);
-        System.out.print(y + "  -y  ");
-        System.out.print(x + "  -x  ");
-        System.out.println(board[y][x]);
         for (int i = 0; i < 4; i++) {
             int yCur = y + Y_MOVING[i];
             int xCur = x + X_MOVING[i];
