@@ -1,8 +1,7 @@
 class Solution {
   public String sortVowels(String s) {
-        char[] chars = s.toCharArray();
         List<Character> characters = new ArrayList<>();
-        for (int i = 0; i < chars.length; i++) {
+        for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             if (isVowelBySwitch(ch)) {
                 characters.add(ch);
