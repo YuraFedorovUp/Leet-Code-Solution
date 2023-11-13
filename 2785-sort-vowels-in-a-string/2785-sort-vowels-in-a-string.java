@@ -1,26 +1,24 @@
 class Solution {
-   public String sortVowels(String s) {
+  public String sortVowels(String s) {
         char[] chars = s.toCharArray();
-        List<Integer> indexes = new ArrayList<>();
         List<Character> characters = new ArrayList<>();
         for (int i = 0; i < chars.length; i++) {
             char ch = s.charAt(i);
             if (isVowelBySwitch(ch)) {
                 characters.add(ch);
-                indexes.add(i);
             }
         }
         Collections.sort(characters);
-        System.out.println(characters);
-        for (int i = 0; i < characters.size(); i++) {
-            chars[indexes.get(i)] = characters.get(i);
+        StringBuilder result = new StringBuilder(s.length());
+        int j = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (isVowelBySwitch(s.charAt(i))) {
+                result.append(characters.get(j++));
+            }else {
+                result.append(s.charAt(i));
+            }
         }
-        System.out.println(chars);
-         String result = "";
-        for (char ch : chars) {
-            result+=ch;
-        }
-        return result;
+        return result.toString();
     }
 
     boolean isVowelBySwitch(char c) {
