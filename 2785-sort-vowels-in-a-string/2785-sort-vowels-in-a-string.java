@@ -21,21 +21,8 @@ class Solution {
         return result.toString();
     }
 
-    boolean isVowelBySwitch(char c) {
-        switch (c) {
-            case 'a':
-            case 'e':
-            case 'i':
-            case 'o':
-            case 'u':
-            case 'A':
-            case 'E':
-            case 'I':
-            case 'O':
-            case 'U':
-                return true;
-            default:
-                return false;
-        }
+       boolean isVowelBySwitch(char c) {
+        return c == 'a' || c == 'e' || c == 'o'|| c == 'u'|| c == 'i'
+                || c == 'A' || c == 'E' || c == 'O'|| c == 'U'|| c == 'I';
     }
 }
