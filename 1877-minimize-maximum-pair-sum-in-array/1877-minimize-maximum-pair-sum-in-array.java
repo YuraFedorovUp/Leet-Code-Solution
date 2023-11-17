@@ -29,8 +29,9 @@ public class Solution {
         int right = nums.length - 1;
         int ans = 0;
         while (left < right) {
-            if (nums[left] + nums[right] > ans) {
-                ans = nums[left] + nums[right];
+            final int cur = nums[left] + nums[right];
+            if (cur > ans) {
+                ans = cur;
             }
             left++;
             right--;
