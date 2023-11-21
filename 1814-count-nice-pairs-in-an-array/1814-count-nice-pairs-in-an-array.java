@@ -60,21 +60,6 @@ public class Solution {
         }
         return result;
     }
-//    public int countNicePairs(int[] nums) {
-//        int result = 0;
-//        final List<Integer> reverseNums = getReverseNums(nums);
-//        System.out.println(reverseNums);
-//        return result;
-//    }
-//
-//    private List<Integer> getReverseNums(int[] nums) {
-//        final List<Integer> reverseNums = new ArrayList<>();
-//        for (int number : nums) {
-//            final int reverseNum = getReverseNum(number);
-//            reverseNums.add(reverseNum);
-//        }
-//        return reverseNums;
-//    }
 
     private int getReverseNum(int number) {
         int cur = number;
