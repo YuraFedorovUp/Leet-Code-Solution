@@ -83,8 +83,8 @@ public class Solution {
         final int[][] gird = getGird(matrix);
         int[] heights = new int[matrix[0].length];
         for (int[] rowNumbers : gird) {
-            heights = fillHeights(heights, rowNumbers);
-            int curAns = largestRectangleArea(Arrays.copyOf(heights,heights.length));
+            fillHeights(heights, rowNumbers);
+            int curAns = largestRectangleArea(Arrays.copyOf(heights, heights.length));
             if (curAns > ans) {
                 ans = curAns;
             }
@@ -92,16 +92,10 @@ public class Solution {
         return ans;
     }
 
-    private int[] fillHeights(int[] heights, int[] rowNumbers) {
-        int[] ans = new int[heights.length];
+    private void fillHeights(int[] heights, int[] rowNumbers) {
         for (int i = 0; i < heights.length; i++) {
-            if (rowNumbers[i] == 0) {
-                ans[i] = 0;
-            } else {
-                ans[i] = heights[i] + 1;
-            }
+            heights[i] = rowNumbers[i] == 0 ? 0 : heights[i] + 1;
         }
-        return ans;
     }
 
     private int[][] getGird(char[][] matrix) {
