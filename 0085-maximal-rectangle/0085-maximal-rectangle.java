@@ -80,9 +80,8 @@ public class Solution {
 
     public int maximalRectangle(char[][] matrix) {
         int ans = 0;
-        final int[][] gird = getGird(matrix);
         int[] heights = new int[matrix[0].length];
-        for (int[] rowNumbers : gird) {
+        for (char[] rowNumbers : matrix) {
             fillHeights(heights, rowNumbers);
             int curAns = largestRectangleArea(Arrays.copyOf(heights, heights.length));
             if (curAns > ans) {
@@ -92,20 +91,10 @@ public class Solution {
         return ans;
     }
 
-    private void fillHeights(int[] heights, int[] rowNumbers) {
+    private void fillHeights(int[] heights, char[] rowNumbers) {
         for (int i = 0; i < heights.length; i++) {
-            heights[i] = rowNumbers[i] == 0 ? 0 : heights[i] + 1;
+            heights[i] = rowNumbers[i] == '0' ? 0 : heights[i] + 1;
         }
-    }
-
-    private int[][] getGird(char[][] matrix) {
-        final int[][] gird = new int[matrix.length][matrix[0].length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                gird[i][j] = matrix[i][j] == '0' ? 0 : 1;
-            }
-        }
-        return gird;
     }
 
     public int largestRectangleArea(int[] heights) {
