@@ -1,6 +1,4 @@
-
 import java.util.List;
-
 
 public class Solution {
     public static void main(String[] args) {
@@ -9,13 +7,12 @@ public class Solution {
     }
 
     private void start() {
-//        test1();
-//        test2();
+        test1();
+        test2();
         test3();
     }
 
     private void test1() {
-
         ListNode l1 = createNode(0, List.of(1, 4, 3, 2, 5, 2));
         ListNode l2 = createNode(0, List.of(9, 9, 9, 9));
         ListNode node = partition(l1, 3);
@@ -61,14 +58,14 @@ public class Solution {
     }
 
     private ListNode removedNode(ListNode head, MovedNodeDescription nodeDescription) {
-        ListNode removedNode = nodeDescription.node;
+        final ListNode removedNode = nodeDescription.node;
         deleteNode(head, nodeDescription.node);
         if (nodeDescription.insertIndex == 0) {
             removedNode.next = head;
             return removedNode;
         }
-        ListNode prev = getPrev(head, nodeDescription.insertIndex);
-        ListNode temp = prev.next;
+        final ListNode prev = getPrev(head, nodeDescription.insertIndex);
+        final ListNode temp = prev.next;
         prev.next = removedNode;
         removedNode.next = temp;
         return head;
@@ -132,10 +129,6 @@ public class Solution {
             this.index = index;
             this.insertIndex = insertIndex;
             this.node = node;
-        }
-
-        boolean isInsertInHead() {
-            return insertIndex == -1;
         }
     }
 }
