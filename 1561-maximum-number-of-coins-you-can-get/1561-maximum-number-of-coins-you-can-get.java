@@ -1,3 +1,4 @@
+
 import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -19,25 +20,16 @@ public class Solution {
         System.out.println(maxCoins(nums));
     }
 
-
     public int maxCoins(int[] piles) {
         int result = 0;
         Arrays.sort(piles);
-        final Deque<Integer> deque = getDeque(piles);
-        while (!deque.isEmpty()) {
-            deque.pollFirst();
-            result += deque.pollFirst();
-            deque.pollLast();
+        int left = 0;
+        int right = piles.length - 2;
+        while (left < right) {
+            result += piles[right];
+            right -= 2;
+            left++;
         }
         return result;
-    }
-
-    private Deque<Integer> getDeque(int[] piles) {
-        final Deque<Integer> deque = new LinkedList<>();
-        for (int i = 0; i < piles.length; i++) {
-            deque.addFirst(piles[i]);
-        }
-        System.out.println(deque);
-        return deque;
     }
 }
