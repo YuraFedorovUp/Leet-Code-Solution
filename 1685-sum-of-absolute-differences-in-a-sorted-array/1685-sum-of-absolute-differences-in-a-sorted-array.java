@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Solution {
 
@@ -11,8 +9,8 @@ public class Solution {
 
     private void start() {
         test();
-        //  test1();
-        // test2();
+        test1();
+        test2();
         test3();
     }
 
@@ -49,21 +47,14 @@ public class Solution {
             prefix[i] = prefix[i - 1] + nums[i];
         }
         for (int i = 0; i < length; i++) {
-            final int leftCount = i == 0 ? 0 : i ;
+            final int leftCount = i == 0 ? 0 : i;
             final int rightCount = i == length - 1 ? 0 : length - 1 - i;
 
             final int leftSum = i == 0 ? 0 : prefix[i - 1];
             final int rightSum = i == length - 1 ? 0 : prefix[length - 1] - prefix[i];
 
-            final int resultLeft = leftCount * nums[i] - leftSum;
-            final int resultRight =rightSum- rightCount * nums[i] ;
-            final int result = resultLeft + resultRight;
-            results[i] = result;
-
-
+            results[i] = leftCount * nums[i] - leftSum + rightSum - rightCount * nums[i];
         }
-
-
         return results;
     }
 }
