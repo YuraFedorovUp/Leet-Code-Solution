@@ -2,42 +2,6 @@ import java.util.Arrays;
 
 public class Solution {
 
-    public static void main(String[] args) {
-        Solution main = new Solution();
-        main.start();
-    }
-
-    private void start() {
-        test();
-        test1();
-        test2();
-        test3();
-    }
-
-    private void test() {
-        final int nums[] = new int[]{2, 3, 5};
-        System.out.println(Arrays.toString(getSumAbsoluteDifferences(nums)));
-    }
-
-    private void test1() {
-        final int nums[] = new int[]{4, 7, 7, 7, 10};
-        System.out.println(Arrays.toString(getSumAbsoluteDifferences(nums)));
-    }
-
-    private void test2() {
-        final int nums[] = new int[]{7, 7, 7, 8, 9, 10};
-        System.out.println("массив           " + Arrays.toString((nums)));
-        System.out.println("ожидаемый ответ  [6, 6, 6, 6, 8, 12]");
-        System.out.println("ответ            " + Arrays.toString(getSumAbsoluteDifferences(nums)));
-    }
-
-    private void test3() {
-        final int nums[] = new int[]{1, 1, 1, 2, 2, 2, 3, 3, 3, 7};
-        System.out.println("массив           " + Arrays.toString((nums)));
-        System.out.println("ожидаемый ответ  [15, 15, 15, 11, 11, 11, 13, 13, 13, 45]");
-        System.out.println("ответ            " + Arrays.toString(getSumAbsoluteDifferences(nums)));
-    }
-
     public int[] getSumAbsoluteDifferences(int[] nums) {
         final int length = nums.length;
         final int[] results = new int[length];
