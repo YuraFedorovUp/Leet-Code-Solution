@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 public class Solution {
 
     public static void main(String[] args) {
@@ -18,18 +15,20 @@ public class Solution {
     }
 
     public int majorityElement(int[] nums) {
-        final Map<Integer, Integer> numberToQuantity = new HashMap<>();
-        for (int number : nums) {
-            numberToQuantity.put(number, numberToQuantity.getOrDefault(number, 0) + 1);
-        }
         int number = 0;
-        int maxQuantity = 0;
-        for (Map.Entry<Integer, Integer> entry : numberToQuantity.entrySet()) {
-            if (maxQuantity < entry.getValue()) {
-                maxQuantity = entry.getValue();
-                number = entry.getKey();
+        int count = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (count == 0) {
+                number = nums[i];
+                count = 1;
+            } else if (nums[i] == number) {
+                count++;
+            } else {
+                count--;
             }
         }
+
+
         return number;
     }
 }
