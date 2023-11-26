@@ -28,43 +28,18 @@ public class Solution {
     public int[] productExceptSelf(int[] nums) {
         final int length = nums.length;
         final int[] results = new int[length];
-        int product = getProduct(nums);
-        if (product == 0) {
-            product = getProductWithotOneZero(nums);
-            if (product != 0) {
-                for (int i = 0; i < length; i++) {
-                    if (nums[i] == 0) {
-                        results[i] = product;
-                        return results;
-                    }
-                }
-            }
-            return results;
+        results[0] = 1;
+        results[length - 1] = 1;
+        int prefix = 1;
+        for (int i = 0; i < length - 1; i++) {
+            prefix *= nums[i];
+            results[i + 1] = prefix;
         }
-        for (int i = 0; i < length; i++) {
-            results[i] = product / nums[i];
+        int postfix = 1;
+        for (int i = length - 1; i > 0; i--) {
+            postfix *= nums[i];
+            results[i - 1] *= postfix;
         }
         return results;
-    }
-
-    private int getProductWithotOneZero(int[] nums) {
-        boolean isZeroPresent = false;
-        int product = 1;
-        for (int i = 0; i < nums.length; i++) {
-            if (!isZeroPresent && nums[i] == 0) {
-                isZeroPresent = true;
-                continue;
-            }
-            product *= nums[i];
-        }
-        return product;
-    }
-
-    private int getProduct(int[] nums) {
-        int product = 1;
-        for (int i = 0; i < nums.length; i++) {
-            product *= nums[i];
-        }
-        return product;
     }
 }
