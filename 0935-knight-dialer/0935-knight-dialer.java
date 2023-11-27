@@ -21,12 +21,7 @@ public class Solution {
         indexToNextIndexes.put(9, List.of(2, 4));
         variants = getVariants(5002);
     }
-
-    public static void main(String[] args) {
-        Solution main = new Solution();
-        main.start();
-    }
-
+    
     private static int[][] getVariants(int n) {
         final int[][] variants = new int[n + 2][10];
         variants[0] = getVariansFirstStep();
@@ -55,37 +50,6 @@ public class Solution {
             for (int it : nextIndexes) {
                 variants[index][it] = (variants[index][it] + cur) % MODULO;
             }
-        }
-    }
-
-    private void start() {
-        test();
-        test1();
-        test2();
-        test3();
-        test4();
-    }
-
-    private void test() {
-        System.out.println(knightDialer(1));
-    }
-
-    private void test1() {
-        System.out.println(knightDialer(2));
-    }
-
-    private void test2() {
-        System.out.println(knightDialer(3));
-    }
-
-    private void test3() {
-        System.out.println(knightDialer(3131));
-    }
-
-    private void test4() {
-        for (int i = 10; i < 3000; i++) {
-            System.out.println("i=   " + i + "   +" + knightDialer(i));
-
         }
     }
 
