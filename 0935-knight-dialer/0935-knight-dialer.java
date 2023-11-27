@@ -1,8 +1,3 @@
-
-
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,50 +58,46 @@ public class Solution {
 
     public int knightDialer(int n) {
         int ans = 0;
-        final long[][] variants = getVariants(n);
+        final int[][] variants = getVariants(n);
         return getSum(variants, n);
     }
 
-    private long[][] getVariants(int n) {
-        final long[][] variants = new long[n + 2][10];
+    private int[][] getVariants(int n) {
+        final int[][] variants = new int[n + 2][10];
         variants[0] = getVariansFirstStep();
         fillVariants(variants, n);
         return variants;
     }
 
-    private int getSum(long[][] variants, int n) {
+    private int getSum(int[][] variants, int n) {
         int ans = 0;
         for (int i = 0; i < 10; i++) {
-            ans += variants[n - 1][i];
-            ans %= MODULO;
+            ans = (ans + variants[n - 1][i]) % MODULO;
         }
         return ans;
     }
 
-    private long[] getVariansFirstStep() {
-        final long[] variantsForFirstStep = new long[10];
+    private int[] getVariansFirstStep() {
+        final int[] variantsForFirstStep = new int[10];
         for (int i = 0; i < 10; i++) {
             variantsForFirstStep[i] = 1;
         }
         return variantsForFirstStep;
     }
 
-    private void fillVariants(long[][] variants, int n) {
+    private void fillVariants(int[][] variants, int n) {
         for (int i = 1; i < n; i++) {
             fillIVariants(variants, i);
         }
     }
 
-    private void fillIVariants(long[][] variants, int index) {
+    private void fillIVariants(int[][] variants, int index) {
         for (int i = 0; i < 10; i++) {
-            final long cur = variants[index - 1][i] % MODULO;
+            final int cur = variants[index - 1][i] % MODULO;
             final List<Integer> nextIndexes = indexToNextIndexes.get(i);
             for (int it : nextIndexes) {
                 variants[index][it] = (variants[index][it] + cur) % MODULO;
-                variants[index][it] %= MODULO;
             }
         }
     }
-
-
 }
