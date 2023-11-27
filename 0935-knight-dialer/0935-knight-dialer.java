@@ -19,7 +19,7 @@ public class Solution {
         indexToNextIndexes.put(7, List.of(2, 6));
         indexToNextIndexes.put(8, List.of(1, 3));
         indexToNextIndexes.put(9, List.of(2, 4));
-        variants = getVariants(5001);
+        variants = getVariants(5000);
     }
 
     public static void main(String[] args) {
