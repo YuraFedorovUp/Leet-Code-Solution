@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class Solution {
     private static final int[][] variants;
-    private static final int MODULO = 1_000_000_000 + 7;
+    private static final int MODULO = 1_000_000_007;
     private static final Map<Integer, List<Integer>> indexToNextIndexes;
 
     static {
