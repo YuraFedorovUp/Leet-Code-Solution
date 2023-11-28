@@ -5,8 +5,8 @@ public class Solution {
     }
 
     private void start() {
-//        test();
-//        test1();
+        test();
+        test1();
         test2();
     }
 
@@ -59,11 +59,6 @@ public class Solution {
     private boolean isApproachCapacity(int[] piles, int h, long capacity) {
         long step = 0;
         for (int pile : piles) {
-            int curPile = pile;
-//            while (curPile > 0) {
-//                curPile -= capacity;
-//                step++;
-//            }
             step += pile / capacity;
             if (pile % capacity != 0) {
                 step++;
