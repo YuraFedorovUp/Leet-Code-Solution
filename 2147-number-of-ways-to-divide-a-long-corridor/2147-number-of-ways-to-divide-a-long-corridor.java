@@ -9,12 +9,12 @@ public class Solution {
     }
 
     private void start() {
-        //     test();
-//        test1();
-//        test2();
-//        test3();
-//        test4();
-//        test5();
+        test();
+        test1();
+        test2();
+        test3();
+        test4();
+        test5();
         test6();
     }
 
@@ -64,9 +64,8 @@ public class Solution {
         final int[] plantsBetweenSeatQuantities = getPlantsBetweenSeatQuanties(pairsQuantity, corridor);
         System.out.println(Arrays.toString(plantsBetweenSeatQuantities));
         long result = 1;
-        //plantsBetweenSeatQuantities[17] = ;
         for (int plantsBetweenSeatQuantity : plantsBetweenSeatQuantities) {
-            result = (result * (plantsBetweenSeatQuantity + 1))%MODULO;
+            result = (result * (plantsBetweenSeatQuantity + 1)) % MODULO;
             result %= MODULO;
         }
         return (int) result;
