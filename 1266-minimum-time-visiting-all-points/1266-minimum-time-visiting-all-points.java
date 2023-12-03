@@ -22,8 +22,8 @@ public class Solution {
     public int minTimeToVisitAllPoints(int[][] points) {
         int result = 0;
         for (int i = 0; i < points.length - 1; i++) {
-            int xDelta = Math.abs(Math.max(points[i][0], points[i + 1][0]) - Math.min(points[i][0], points[i + 1][0]));
-            int yDelta = Math.abs(Math.max(points[i][1], points[i + 1][1]) - Math.min(points[i][1], points[i + 1][1]));
+            int xDelta = Math.abs(points[i + 1][0] - points[i][0]);
+            int yDelta = Math.abs(points[i][1] - points[i + 1][1]);
             final int diagonalTime = Math.abs(Math.min(xDelta, yDelta));
             final int lineTime = Math.abs(xDelta - yDelta);
             result += diagonalTime + lineTime;
