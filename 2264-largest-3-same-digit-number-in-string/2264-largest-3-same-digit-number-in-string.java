@@ -21,7 +21,10 @@ public class Solution {
     public String largestGoodInteger(String num) {
         char resultChar = 2;
         for (int i = 0; i < num.length() - 2; i++) {
-            char ch = num.charAt(i);
+            final char ch = num.charAt(i);
+            if (ch < resultChar) {
+                continue;
+            }
             if (ch == num.charAt(i + 1) && num.charAt(i + 1) == num.charAt(i + 2)) {
                 if (resultChar < ch)
                     resultChar = ch;
