@@ -26,7 +26,6 @@ public class Solution {
             return 1;
         }
         int playQuantity = n / 2;
-        int nextMembersQuantity = n % 2 == 0 ? playQuantity : playQuantity + 1;
-        return playQuantity + numberOfMatches(nextMembersQuantity);
+        return playQuantity + numberOfMatches(n % 2 == 0 ? playQuantity : playQuantity + 1);
     }
 }
