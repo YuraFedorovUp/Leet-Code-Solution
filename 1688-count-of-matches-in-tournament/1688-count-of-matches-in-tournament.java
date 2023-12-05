@@ -25,7 +25,6 @@ public class Solution {
         if (n == 2) {
             return 1;
         }
-        int playQuantity = n / 2;
-        return playQuantity + numberOfMatches(n % 2 == 0 ? playQuantity : playQuantity + 1);
+        return n / 2 + numberOfMatches(n % 2 == 0 ? n / 2 : n / 2 + 1);
     }
 }
