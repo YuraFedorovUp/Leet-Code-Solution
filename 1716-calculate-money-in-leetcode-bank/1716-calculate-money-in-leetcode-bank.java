@@ -26,11 +26,10 @@ public class Solution {
         if ((numberOfWeek + 1) * 7 >= n) {
             return getSum(numberOfWeek + 1, n - (numberOfWeek * 7));
         }
-        int cur = getSum(numberOfWeek + 1, 7);
-        return cur + getTotalMoney(numberOfWeek + 1, n);
+        return getSum(numberOfWeek + 1, 7) + getTotalMoney(numberOfWeek + 1, n);
     }
 
     private int getSum(int firstCount, int x) {
-            return (2 * firstCount + x - 1)  * x/ 2;
+        return (2 * firstCount + x - 1) * x / 2;
     }
 }
