@@ -20,7 +20,7 @@ public class Solution {
 
     public String largestOddNumber(String num) {
         final int lastIndex = getLastIndex(num);
-        return lastIndex == -1 ? "" : num.substring(0, lastIndex+1);
+        return lastIndex == -1 ? "" : num.substring(0, lastIndex + 1);
     }
 
     private int getLastIndex(String num) {
