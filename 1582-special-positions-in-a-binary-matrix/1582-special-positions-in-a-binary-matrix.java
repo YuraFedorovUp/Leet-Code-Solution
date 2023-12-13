@@ -13,9 +13,9 @@ public class Solution {
                 if (mat[i][j] == 1) {
                     curXUniq = j;
                     count++;
-                    if (count > 1) {
-                        continue;
-                    }
+                    // if (count > 1) {
+                    //     continue;
+                    // }
                 }
             }
             if (count == 1) {
