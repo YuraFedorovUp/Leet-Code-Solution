@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +9,7 @@ public class Solution {
     }
 
     private void start() {
-        //  test();
+        test();
         test1();
     }
 
@@ -21,17 +20,7 @@ public class Solution {
 
     private void test1() {
         int matrix[][] = new int[][]{{0, 0, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 1, 0, 0, 1}, {0, 0, 0, 0, 1, 0, 0, 0}, {1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 0, 0}};
-        printMy(matrix);
         System.out.println(numSpecial(matrix));
-    }
-
-    private void printMy(int[][] matrix) {
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                System.out.print(matrix[i][j] + " ");
-            }
-            System.out.println();
-        }
     }
 
     public int numSpecial(int[][] mat) {
