@@ -2,27 +2,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Solution {
-
-    public static void main(String[] args) {
-        Solution main = new Solution();
-        main.start();
-    }
-
-    private void start() {
-        test();
-        test1();
-    }
-
-    private void test() {
-        int matrix[][] = new int[][]{{1, 0, 0}, {0, 0, 1}, {1, 0, 0}};
-        System.out.println(numSpecial(matrix));
-    }
-
-    private void test1() {
-        int matrix[][] = new int[][]{{0, 0, 0, 0, 0, 1, 0, 0}, {0, 0, 0, 0, 1, 0, 0, 1}, {0, 0, 0, 0, 1, 0, 0, 0}, {1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 0, 0, 0, 0}};
-        System.out.println(numSpecial(matrix));
-    }
-
     public int numSpecial(int[][] mat) {
 
         final Set<Integer> xUniqs = new HashSet<>();
