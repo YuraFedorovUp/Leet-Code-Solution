@@ -51,6 +51,6 @@ public class Solution {
     }
 
     private int getMeans(int i, int j, int[] xOnes, int[] yOnes, int y, int x) {
-        return xOnes[j] + yOnes[i]-(y - yOnes[i]) - (x - xOnes[j]);
+        return 2 * xOnes[j] + 2 * yOnes[i] - y - x;
     }
 }
