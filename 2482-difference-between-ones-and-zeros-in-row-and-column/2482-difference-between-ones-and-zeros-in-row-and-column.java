@@ -28,7 +28,6 @@ public class Solution {
     }
 
     public int[][] onesMinusZeros(int[][] grid) {
-//diff[i][j] = onesRowi + onesColj - zerosRowi - zerosColj
         int y = grid.length;
         int x = grid[0].length;
         int[] xOnes = new int[x];
@@ -52,8 +51,6 @@ public class Solution {
     }
 
     private int getMeans(int i, int j, int[] xOnes, int[] yOnes, int y, int x) {
-        int plus = xOnes[j] + yOnes[i];
-        int minus = (y - yOnes[i]) + (x - xOnes[j]);
-        return plus - minus;
+        return xOnes[j] + yOnes[i]-(y - yOnes[i]) - (x - xOnes[j]);
     }
 }
