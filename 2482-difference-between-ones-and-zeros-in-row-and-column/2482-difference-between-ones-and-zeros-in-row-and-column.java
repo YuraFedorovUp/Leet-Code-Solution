@@ -43,14 +43,10 @@ public class Solution {
         int result[][] = new int[y][x];
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                result[i][j] = getMeans(i, j, xOnes, yOnes, y, x);
+                result[i][j] = 2 * xOnes[j] + 2 * yOnes[i] - y - x;
 
             }
         }
         return result;
-    }
-
-    private int getMeans(int i, int j, int[] xOnes, int[] yOnes, int y, int x) {
-        return 2 * xOnes[j] + 2 * yOnes[i] - y - x;
     }
 }
