@@ -28,9 +28,9 @@ public class Solution {
             startCities.add(path.get(0));
             goalCities.add(path.get(1));
         }
-        for (String goalCity : goalCities) {
-            if (!startCities.contains(goalCity)) {
-                return goalCity;
+        for (List<String> path : paths) {
+            if (!startCities.contains(path.get(1))) {
+                return path.get(1);
             }
         }
         throw new RuntimeException();
