@@ -23,10 +23,8 @@ public class Solution {
 
     public String destCity(List<List<String>> paths) {
         final Set<String> startCities = new HashSet<>();
-        final Set<String> goalCities = new HashSet<>();
         for (List<String> path : paths) {
             startCities.add(path.get(0));
-            goalCities.add(path.get(1));
         }
         for (List<String> path : paths) {
             if (!startCities.contains(path.get(1))) {
