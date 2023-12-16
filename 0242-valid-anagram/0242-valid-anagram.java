@@ -2,21 +2,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Solution {
-
-    public static void main(String[] args) {
-        Solution main = new Solution();
-        main.start();
-    }
-
-    private void start() {
-        test();
-    }
-
-    private void test() {
-        System.out.println(isAnagram("hmd","dfg"));
-    }
-
-
     public boolean isAnagram(String s, String t) {
         if (s.length() != t.length()) {
             return false;
@@ -27,14 +12,7 @@ public class Solution {
             return false;
         }
         return sCharToQuantity.entrySet().stream()
-                .allMatch(it -> {
-                    char ch = it.getKey();
-                    boolean res = it.getValue().equals(tCharToQuantity.getOrDefault(it.getKey(), -1));
-                    if(!res){
-                        int y=4;
-                    }
-                    return res;
-                });
+                .allMatch(it -> it.getValue().equals(tCharToQuantity.getOrDefault(it.getKey(), -1)));
     }
 
     private Map<Character, Integer> getCharToQuantity(String world) {
