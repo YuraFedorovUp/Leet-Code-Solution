@@ -1,3 +1,5 @@
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,12 +9,16 @@ public class Solution {
             return false;
         }
         final Map<Character, Integer> sCharToQuantity = getCharToQuantity(s);
-        final Map<Character, Integer> tCharToQuantity = getCharToQuantity(t);
-        if (sCharToQuantity.size() != tCharToQuantity.size()) {
-            return false;
+        for (int i = 0; i < t.length(); i++) {
+            char ch = t.charAt(i);
+            Integer value=sCharToQuantity.get(ch);
+            if (value==null||value==0){
+                return false;
+            }
+            sCharToQuantity.put(ch, value-1);
         }
         return sCharToQuantity.entrySet().stream()
-                .allMatch(it -> it.getValue().equals(tCharToQuantity.getOrDefault(it.getKey(), -1)));
+                .allMatch(it -> it.getValue().equals(0));
     }
 
     private Map<Character, Integer> getCharToQuantity(String world) {
