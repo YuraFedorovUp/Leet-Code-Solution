@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 public class Solution {
@@ -26,23 +27,20 @@ public class Solution {
     }
 
     private void test() {
-        System.out.println(isPathCrossing("NESWW"));
+        System.out.println(isPathCrossing("NES"));
     }
 
-
     public boolean isPathCrossing(String path) {
-        final Set<List<Integer>> usedPoints = new HashSet<>();
-        usedPoints.add(getUsedPoint(0, 0));
-        final int[] currentPoint = new int[]{0, 0};
+        final Set<Point> usedPoints = new HashSet<>();
+        usedPoints.add(new Point(0, 0));
+        Point currentPoint = new Point(0, 0);
         for (int i = 0; i < path.length(); i++) {
             final List<Integer> changing = directionToChanging.get(path.charAt(i));
-            currentPoint[0] += changing.get(0);
-            currentPoint[1] += changing.get(1);
-            final var usedPoint = getUsedPoint(currentPoint[0], currentPoint[1]);
-            if (usedPoints.contains(usedPoint)) {
+            currentPoint = currentPoint.getNextPoint(changing.get(0), changing.get(1));
+            if (usedPoints.contains(currentPoint)) {
                 return true;
             }
-            usedPoints.add(usedPoint);
+            usedPoints.add(currentPoint);
         }
         return false;
     }
@@ -52,5 +50,32 @@ public class Solution {
         result.add(y);
         result.add(x);
         return result;
+    }
+
+    class Point {
+        private int y;
+        private int x;
+
+        public Point(int y, int x) {
+            this.y = y;
+            this.x = x;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Point)) return false;
+            Point point = (Point) o;
+            return y == point.y && x == point.x;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(y, x);
+        }
+
+        public Point getNextPoint(Integer dy, Integer dx) {
+            return new Point(y + dy, x + dx);
+        }
     }
 }
