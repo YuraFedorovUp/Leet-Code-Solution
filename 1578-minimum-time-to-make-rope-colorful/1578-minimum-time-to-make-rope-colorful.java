@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class Solution {
 
     public static void main(String[] args) {
@@ -6,8 +9,8 @@ public class Solution {
     }
 
     private void start() {
-//        test();
-//        test1();
+        test();
+        test1();
         test2();
     }
 
@@ -23,17 +26,16 @@ public class Solution {
         System.out.println("ожидаемый ответ 2; ф-" + minCost("aabaa", new int[]{1, 2, 3, 4, 1}));
     }
 
-    public int minCost(String colors, int[] neededTime) {
-        var result = 0;
-        final int[] restNeededTime = new int[neededTime.length];
-        for (int i = 0; i < colors.length() - 1; i++) {
-            char color = colors.charAt(i);
-            if (color == colors.charAt(i + 1)) {
-                int curPrice = Math.max(restNeededTime[i], neededTime[i]);
-                restNeededTime[i + 1] = Math.max(curPrice, neededTime[i + 1]);
-                result += Math.min(curPrice, neededTime[i + 1]);
+      public int minCost(String colors, int[] neededTime) {
+        int ans = 0;
+        for(int i=0; i<colors.length()-1; i++) {
+            char curr = colors.charAt(i);
+            char next = colors.charAt(i+1);
+            if(curr==next) {
+                ans += Math.min(neededTime[i] , neededTime[i+1]);
+                neededTime[i+1] = Math.max(neededTime[i], neededTime[i+1]);
             }
         }
-        return result;
+        return ans;
     }
 }
