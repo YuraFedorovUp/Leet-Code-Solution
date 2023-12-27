@@ -25,15 +25,13 @@ public class Solution {
 
     public int minCost(String colors, int[] neededTime) {
         var result = 0;
-        final int[] restNeededTime = new int[neededTime.length + 1];
+        final int[] restNeededTime = new int[neededTime.length];
         for (int i = 0; i < colors.length() - 1; i++) {
             char color = colors.charAt(i);
             if (color == colors.charAt(i + 1)) {
                 int curPrice = Math.max(restNeededTime[i], neededTime[i]);
-
-                int nextPrice = Math.max(curPrice, neededTime[i + 1]);
+                restNeededTime[i + 1] = Math.max(curPrice, neededTime[i + 1]);
                 result += Math.min(curPrice, neededTime[i + 1]);
-                restNeededTime[i + 1] = nextPrice;
             }
         }
         return result;
