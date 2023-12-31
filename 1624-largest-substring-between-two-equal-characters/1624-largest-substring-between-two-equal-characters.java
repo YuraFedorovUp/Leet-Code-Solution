@@ -6,7 +6,7 @@ public class Solution {
     }
 
     private void start() {
-           test();
+        test();
         test1();
         test2();
     }
@@ -18,7 +18,6 @@ public class Solution {
     private void test1() {
         System.out.println("ожидаемый ответ -1; ф-" + maxLengthBetweenEqualCharacters("cbzxy"));
     }
-
 
     private void test2() {
         System.out.println("ожидаемый ответ 0; ф-" + maxLengthBetweenEqualCharacters("aa"));
@@ -32,15 +31,13 @@ public class Solution {
         int right = s.length() - 1;
         int result = -1;
         while (left < right) {
-            int lChar = s.charAt(left);
-            int rChar = s.charAt(right);
-            int lDif = length - revers.indexOf(lChar);
-            lDif = lDif - left-2;
-            lDif = getDif(lDif);
-            int rDif =s.indexOf(rChar);
-            rDif = right - rDif-2;
-            rDif = getDif(rDif);
-            int cur = Math.max(lDif, rDif);
+            int lDif = length - revers.indexOf(s.charAt(left));
+            lDif = lDif - left - 2;
+         //   lDif = getDif(lDif);
+            int rDif = s.indexOf(s.charAt(right));
+            rDif = right - rDif - 2;
+          //  rDif = getDif(rDif);
+            final int cur = Math.max(lDif, rDif);
             result = Math.max(cur, result);
             left++;
             right--;
