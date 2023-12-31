@@ -31,21 +31,13 @@ public class Solution {
         int right = s.length() - 1;
         int result = -1;
         while (left < right) {
-            int lDif = length - revers.indexOf(s.charAt(left));
-            lDif = lDif - left - 2;
-         //   lDif = getDif(lDif);
-            int rDif = s.indexOf(s.charAt(right));
-            rDif = right - rDif - 2;
-          //  rDif = getDif(rDif);
+            int lDif = length - revers.indexOf(s.charAt(left)) - left - 2;
+            int rDif = right - s.indexOf(s.charAt(right)) - 2;
             final int cur = Math.max(lDif, rDif);
             result = Math.max(cur, result);
             left++;
             right--;
         }
         return result;
-    }
-
-    private int getDif(int dif) {
-        return dif < 0 ? -1 : dif;
     }
 }
