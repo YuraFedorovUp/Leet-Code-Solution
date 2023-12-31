@@ -31,12 +31,10 @@ public class Solution {
         int right = s.length() - 1;
         int result = -1;
         while (left < right) {
-            int lDif = length - revers.indexOf(s.charAt(left)) - left - 2;
-            int rDif = right - s.indexOf(s.charAt(right)) - 2;
+            int lDif = length - revers.indexOf(s.charAt(left)) - left++ - 2;
+            int rDif = right - s.indexOf(s.charAt(right--)) - 2;
             final int cur = Math.max(lDif, rDif);
             result = Math.max(cur, result);
-            left++;
-            right--;
         }
         return result;
     }
