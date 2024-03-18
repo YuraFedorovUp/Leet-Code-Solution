@@ -42,14 +42,13 @@ class Solution {
 
     private void test3() {
         final int intervals[][] = {{-2147483646, -2147483645}, {2147483646, 2147483647}};
-        // final int intervals[][] = {{-5, -5}, {5,5}};
         final int result = findMinArrowShots(intervals);
         System.out.println("ожидаемый   ответ - " + 2);
         System.out.println("фактический ответ - " + result);
         System.out.println("//////////////////////");
     }
 
-    private void test4() {//[[9,12],[1,10],[4,11],[8,12],[3,9],[6,9],[6,7]]
+    private void test4() {
         final int intervals[][] = {{9,12}, {1,10}, {4,11}, {8,12}, {3,9}, {6,9}, {6,7}};
         // final int intervals[][] = {{-5, -5}, {5,5}};
         final int result = findMinArrowShots(intervals);
