@@ -46,7 +46,7 @@ public class Solution {
     }
 
     public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) {
+        if (head == null) {
             return head;
         }
         var cur = head;
