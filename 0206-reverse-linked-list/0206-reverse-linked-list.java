@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
-
 public class Solution {
     public static void main(String[] args) {
         Solution main = new Solution();
@@ -10,7 +6,7 @@ public class Solution {
 
     private void start() {
         test0();
-        test1();
+        //   test1();
     }
 
     private void test0() {
@@ -48,27 +44,20 @@ public class Solution {
         }
         return new ListNode(integers.get(step), createNode(step + 1, integers));
     }
-    
+
     public ListNode reverseList(ListNode head) {
-        if (head == null) {
-            return null;
+        if (head == null || head.next == null) {
+            return head;
         }
-        var currentNode = head;
-        final var nodes = new ArrayList<ListNode>();
-        while (currentNode != null) {
-            nodes.add(currentNode);
-            currentNode = currentNode.next;
+        var cur = head;
+        ListNode prev = null;
+        ListNode next = null;
+        while (cur != null) {
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
         }
-        nodes.add(0, null);
-        currentNode = nodes.get(nodes.size() - 1);
-        var result = currentNode;
-        for (int i = nodes.size() - 2; i >= 0; i--) {
-            final var node = nodes.get(i);
-            currentNode.next = node;
-            currentNode = node;
-
-        }
-        return result;
+        return prev;
     }
-
 }
