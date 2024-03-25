@@ -22,12 +22,12 @@ class Solution {
 
     public List<Integer> findDuplicates(int[] nums) {
         final var result = new ArrayList<Integer>();
-        final var duplicatesNums = new int[nums.length + 1];
         for (var num : nums) {
-            if (duplicatesNums[num] == 1) {
-                result.add(num);
+            final var index = Math.abs(num) - 1;
+            if (nums[index] < 0) {
+                result.add(index+1);
             } else {
-                duplicatesNums[num] = 1;
+                nums[index] = -nums[index];
             }
         }
         return result;
