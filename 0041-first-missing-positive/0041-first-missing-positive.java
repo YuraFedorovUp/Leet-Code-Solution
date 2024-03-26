@@ -1,5 +1,6 @@
 import java.util.ArrayList;
-import java.util.TreeSet;
+import java.util.Comparator;
+import java.util.HashSet;
 
 class Solution {
 
@@ -21,16 +22,14 @@ class Solution {
     }
 
     public int firstMissingPositive(int[] nums) {
-        final var positiveNumbers = new TreeSet<Integer>();
+        final var positiveNumbers = new HashSet<Integer>();
         for (var num : nums) {
-            if (num > 0 && !positiveNumbers.contains(num)) {
+            if (num > 0) {
                 positiveNumbers.add(num);
             }
         }
-        final var sortedPositiveNumbers = new ArrayList<>(positiveNumbers);
-        for (var num : positiveNumbers) {
-            sortedPositiveNumbers.add(num);
-        }
+        final var sortedPositiveNumbers = new ArrayList<Integer>(positiveNumbers);
+        sortedPositiveNumbers.sort(Comparator.comparingInt(Integer::intValue));
         for (int i = 0; i < sortedPositiveNumbers.size(); i++) {
             if (sortedPositiveNumbers.get(i) != i + 1) {
                 return i + 1;
