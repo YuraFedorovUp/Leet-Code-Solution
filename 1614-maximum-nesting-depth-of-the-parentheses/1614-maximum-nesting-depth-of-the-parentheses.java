@@ -1,4 +1,3 @@
-
 class Solution {
 
     public static void main(String[] args) {
@@ -21,12 +20,11 @@ class Solution {
     public int maxDepth(String s) {
         var result = 0;
         var count = 0;
-        for (int i = 0; i < s.length(); i++) {
-            final var ch = s.charAt(i);
+        for (var ch : s.toCharArray()) {
             if (ch == '(') {
                 count++;
                 result = Math.max(count, result);
-            } else if (ch == ')'){
+            } else if (ch == ')') {
                 count--;
             }
         }
