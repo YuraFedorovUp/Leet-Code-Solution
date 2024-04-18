@@ -29,35 +29,23 @@ class Solution {
     }
 
 
-    public int islandPerimeter(int[][] grid) {
-        var result = 0;
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x] == 0) {
-                    continue;
+        public int islandPerimeter(int[][] grid) {
+            int perimeter = 0;
+            int yMax = grid.length;
+            int xMax = grid[0].length;
+            for (int y = 0; y < yMax; y++) {
+                for (int x = 0; x < xMax; x++) {
+                    if (grid[y][x] == 1) {
+                        perimeter += 4;
+                        if (y > 0 && grid[y -1][x] == 1) {
+                            perimeter -= 2;
+                        }
+                        if (x > 0 && grid[y][x-1] == 1) {
+                            perimeter -= 2;
+                        }
+                    }
                 }
-                final var currentResult = getCurrentResult(y, x, grid);
-                result += currentResult;
             }
+            return perimeter;
         }
-        return result;
-    }
-
-    private int getCurrentResult(int y, int x, int[][] grid) {
-        final var yMax = grid.length;
-        final var xMax = grid[0].length;
-        var currentResult = 0;
-        for (int i = 0; i < 4; i++) {
-            final var currentY = DELTA_Y[i] + y;
-            final var currentX = DELTA_X[i] + x;
-            if (currentY < 0 || currentY >= yMax || currentX < 0 || currentX >= xMax) {
-                currentResult++;
-                continue;
-            }
-            if (grid[currentY][currentX] == 0) {
-                currentResult++;
-            }
-        }
-        return currentResult;
-    }
 }
