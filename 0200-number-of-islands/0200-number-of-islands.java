@@ -3,7 +3,6 @@ import java.util.LinkedList;
 class Solution {
     private static final int[] DELTA_Y = {0, 1, 0, -1};
     private static final int[] DELTA_X = {1, 0, -1, 0};
-    private static boolean[][] inUse = null;
     private static int yMax = 0;
     private static int xMax = 0;
 
@@ -61,7 +60,7 @@ class Solution {
         init(grid);
         for (int y = 0; y < yMax; y++) {
             for (int x = 0; x < xMax; x++) {
-                if (grid[y][x] == '0' || inUse[y][x]) {
+                if (grid[y][x] == '0') {
                     continue;
                 }
                 islandQuantity++;
@@ -75,7 +74,6 @@ class Solution {
     private void init(char[][] grid) {
         yMax = grid.length;
         xMax = grid[0].length;
-        inUse = new boolean[yMax][xMax];
     }
 
 
@@ -83,6 +81,7 @@ class Solution {
         final var queue = new LinkedList<Integer>();
         queue.add(y);
         queue.add(x);
+        grid[y][x] = '0';
         while (queue.size() != 0) {
             final var yy = queue.remove(0);
             final var xx = queue.remove(0);
@@ -93,11 +92,10 @@ class Solution {
                         && currentY < yMax
                         && currentX >= 0
                         && currentX < xMax
-                        && grid[currentY][currentX] == '1'
-                        && !inUse[currentY][currentX]) {
-                    inUse[currentY][currentX] = true;
+                        && grid[currentY][currentX] == '1') {
                     queue.add(currentY);
                     queue.add(currentX);
+                    grid[currentY][currentX] = '0';
                 }
             }
         }
