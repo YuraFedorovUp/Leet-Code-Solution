@@ -66,7 +66,6 @@ class Solution {
                 }
                 islandQuantity++;
                 markIsland(y, x, grid);
-                //printInUse();
             }
 
         }
@@ -101,15 +100,5 @@ class Solution {
                 queue.add(currentX);
             }
         }
-    }
-
-    private void printInUse() {
-        for (int y = 0; y < yMax; y++) {
-            for (int x = 0; x < xMax; x++) {
-                System.out.print( inUse[y][x] + "  ");
-            }
-            System.out.println();
-        }
-        System.out.println("////////////////////");
     }
 }
