@@ -89,15 +89,16 @@ class Solution {
             for (int i = 0; i < 4; i++) {
                 final var currentY = DELTA_Y[i] + yy;
                 final var currentX = DELTA_X[i] + xx;
-                if (currentY < 0 || currentY >= yMax || currentX < 0 || currentX >= xMax) {
-                    continue;
+                if (currentY >= 0
+                        && currentY < yMax
+                        && currentX >= 0
+                        && currentX < xMax
+                        && grid[currentY][currentX] == '1'
+                        && !inUse[currentY][currentX]) {
+                    inUse[currentY][currentX] = true;
+                    queue.add(currentY);
+                    queue.add(currentX);
                 }
-                if (grid[currentY][currentX] == '0' || inUse[currentY][currentX]) {
-                    continue;
-                }
-                inUse[currentY][currentX] = true;
-                queue.add(currentY);
-                queue.add(currentX);
             }
         }
     }
