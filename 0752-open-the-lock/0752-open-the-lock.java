@@ -1,11 +1,29 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 class Solution {
+    private static final Map<Character, List<Character>> charToInsertChars;
+
+    static {
+        charToInsertChars = new HashMap<>();
+        charToInsertChars.put('0', List.of('1', '9'));
+        charToInsertChars.put('1', List.of('2', '0'));
+        charToInsertChars.put('2', List.of('3', '1'));
+        charToInsertChars.put('3', List.of('4', '2'));
+        charToInsertChars.put('4', List.of('5', '3'));
+        charToInsertChars.put('5', List.of('6', '4'));
+        charToInsertChars.put('6', List.of('7', '5'));
+        charToInsertChars.put('7', List.of('8', '6'));
+        charToInsertChars.put('8', List.of('9', '7'));
+        charToInsertChars.put('9', List.of('0', '8'));
+    }
+
 
     public static void main(String[] args) {
         Solution solution = new Solution();
@@ -80,27 +98,12 @@ class Solution {
     private List<String> getAddedCombinations(String startCombination) {
         final var result = new ArrayList<String>();
         for (int i = 0; i < 4; i++) {
+            final var insertChars = charToInsertChars.get(startCombination.charAt(i));
             for (int j = 0; j < 2; j++) {
                 final var combination = new StringBuilder(startCombination);
-                final var insertChar = getInsertChar(j, combination.charAt(i));
+                final var insertChar = insertChars.get(j);
                 combination.setCharAt(i, insertChar);
                 result.add(combination.toString());
-            }
-        }
-        return result;
-    }
-
-    private char getInsertChar(int j, char ch) {
-        char result = 0;
-        if (j == 0) {
-            result = (char) (ch - 1);
-            if (result < '0') {
-                return '9';
-            }
-        } else {
-            result = (char) (ch + 1);
-            if (result > '9') {
-                return '0';
             }
         }
         return result;
