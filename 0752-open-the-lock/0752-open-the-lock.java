@@ -64,8 +64,7 @@ class Solution {
         final var deadEnds = Arrays.stream(deadends)
                 .collect(Collectors.toSet());
         final var startCombinations = new ArrayList<>(List.of("0000"));
-        final var result = openLock(0, target, deadEnds, startCombinations, new HashSet<>());
-        return result;
+        return openLock(0, target, deadEnds, startCombinations, new HashSet<>());
     }
 
     private int openLock(
