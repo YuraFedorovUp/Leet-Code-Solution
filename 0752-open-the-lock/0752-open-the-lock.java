@@ -35,7 +35,7 @@ class Solution {
     }
 
     private void test2() {
-        final String[] deadends = {"8887","8889","8878","8898","8788","8988","7888","9888"};
+        final String[] deadends = {"8887", "8889", "8878", "8898", "8788", "8988", "7888", "9888"};
         final var result = openLock(deadends, "8888");
         System.out.println("expected - " + "-1");
         System.out.println("actual   - " + result);
@@ -78,13 +78,12 @@ class Solution {
     }
 
     private List<String> getAddedCombinations(String startCombination) {
-        final var result =new ArrayList<String>();
-        for (int i=0;i<4;i++){
-            for (int j=0;j<2;j++){
+        final var result = new ArrayList<String>();
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 2; j++) {
                 final var combination = new StringBuilder(startCombination);
-                final var insertChar = getInsertChar(j,combination.charAt(i));
-                combination.insert(i, insertChar);
-                combination.deleteCharAt(i+1);
+                final var insertChar = getInsertChar(j, combination.charAt(i));
+                combination.setCharAt(i, insertChar);
                 result.add(combination.toString());
             }
         }
@@ -92,15 +91,15 @@ class Solution {
     }
 
     private char getInsertChar(int j, char ch) {
-        char result =0;
-        if (j==0){
-            result = (char) (ch-1);
-            if (result<'0'){
+        char result = 0;
+        if (j == 0) {
+            result = (char) (ch - 1);
+            if (result < '0') {
                 return '9';
             }
-        }else {
-            result = (char) (ch+1);
-            if (result>'9'){
+        } else {
+            result = (char) (ch + 1);
+            if (result > '9') {
                 return '0';
             }
         }
