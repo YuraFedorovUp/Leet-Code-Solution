@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import java.util.HashSet;
 
 class Solution {
 
@@ -40,17 +39,14 @@ class Solution {
     }
 
     public int findMaxK(int[] nums) {
-        final var sortNumbers = Arrays.stream(nums)
-                .boxed()
-                .sorted()
-                .collect(Collectors.toList());
-        for (int i = sortNumbers.size() - 1; i >= 0; i--) {
-            final var number = sortNumbers.get(i);
-            final var isReverseNumberPresent = sortNumbers.contains(-number);
-            if (isReverseNumberPresent) {
-                return number;
-            }
+        int ans = -1;
+        final var seen = new HashSet<>();
+        for (int num : nums) {
+            int absNum = Math.abs(num);
+            if (absNum > ans && seen.contains(-num))
+                ans = absNum;
+            seen.add(num);
         }
-        return -1;
+        return ans;
     }
 }
