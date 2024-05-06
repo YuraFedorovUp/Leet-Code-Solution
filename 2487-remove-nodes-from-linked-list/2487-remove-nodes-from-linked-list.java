@@ -105,6 +105,6 @@ public class Solution {
                 nextNode.next = null;
             }
         }
-        return nodes.get(nodes.size() - 1);
+        return nodes.size() == 0 ? null : nodes.get(nodes.size() - 1);
     }
 }
