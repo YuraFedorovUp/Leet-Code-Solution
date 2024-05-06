@@ -107,6 +107,4 @@ public class Solution {
         }
         return nodes.size() == 0 ? null : nodes.get(nodes.size() - 1);
     }
-
-
 }
